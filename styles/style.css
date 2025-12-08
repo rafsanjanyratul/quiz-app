@@ -89,7 +89,7 @@ body {
     transition: width .35s cubic-bezier(.2, .9, .2, 1);
 }
 
-.questions .question {
+.questions .question-text {
     margin-top: 15px;
 }
 
@@ -147,6 +147,12 @@ body {
     transition: .4s;
 }
 
+.btn-next:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: linear-gradient(90deg, rgb(100, 100, 100), rgb(120, 120, 120));
+}
+
 .btn-result {
     padding: 15px 150px;
     border-radius: 10px;
@@ -157,6 +163,12 @@ body {
     color: #e6eef8;
     cursor: pointer;
     transition: .4s;
+}
+
+.btn-result:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: linear-gradient(90deg, rgb(100, 100, 100), rgb(120, 120, 120));
 }
 
 .btn-next:hover,
@@ -258,6 +270,33 @@ p {
 .hidden {
     display: none;
 }
+.result-section.hidden {
+  display: none;
+}
+
+/* Correct answer styling - green background */
+.options-container button.correct {
+    background-color: rgba(20, 150, 80, 0.3);
+    border-color: rgba(20, 150, 80, 0.8);
+    box-shadow: 0 0 15px rgba(20, 150, 80, 0.5);
+}
+
+/* Wrong answer styling - red background */
+.options-container button.wrong {
+    background-color: rgba(200, 40, 40, 0.3);
+    border-color: rgba(200, 40, 40, 0.8);
+    box-shadow: 0 0 15px rgba(200, 40, 40, 0.5);
+}
+
+/* Selected answer styling */
+.options-container button.selected {
+    transform: scale(1.02);
+}
+
+/* Disabled state for all option buttons after selection */
+.options-container button:disabled {
+    cursor: not-allowed;
+}
 
 @media (max-width:720px) {
     .main-bg-color {
@@ -277,7 +316,7 @@ p {
         padding: 5px 15px;
     }
 
-    .questions .question {
+    .questions .question-text {
         font-size: larger;
     }
 

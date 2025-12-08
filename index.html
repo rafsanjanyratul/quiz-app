@@ -17,48 +17,32 @@
             </div>
             <div class="timer-box">
                 <small>Time Left</small>
-                <div>00.00</div>
+                <div id="timer">00.00</div>
             </div>
         </header>
-        <section class="question-section padding">
+        <section class="question-section padding" id="quizSection">
             <div class="progress-container">
                 <div class="progress-header flex">
-                    <span>Question <span>1</span> of <span>10</span></span>
-                    <span>10%</span>
+                    <span>Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></span>
+                    <span id="progressPercent">10%</span>
                 </div>
                 <div class="progress-bar-bg">
-                    <div class="progress-bar-fill">
+                    <div class="progress-bar-fill" id="progressBar">
                     </div>
                 </div>
             </div>
             <div class="questions">
-                <h2 class="question">What is DOM?</h2>
+                <h2 class="question-text" id="question">What is DOM?</h2>
             </div>
-            <div class="options-container flex">
-                <button>
-                    <span class="option-btn">A</span>
-                    <span class="option-text">Document Object Model</span>
-
-                </button>
-                <button>
-                    <span class="option-btn">B</span>
-                    <span class="option-text">Document Object Notation</span>
-                </button>
-                <button>
-                    <span class="option-btn">C</span>
-                    <span class="option-text">Doc Object Model</span>
-                </button>
-                <button>
-                    <span class="option-btn">D</span>
-                    <span class="option-text">Document Object Models</span>
-                </button>
+            <div class="options-container flex" id="optionsContainer">
+                
             </div>
             <div class="button-section flex">
-                <button class="btn-next">Next Question</button>
-                <button class="btn-result">Show Result</button>
+                <button class="btn-next" id="nextBtn">Next Question</button>
+                <button class="btn-result" id="resultBtn">Show Result</button>
             </div>
         </section>
-        <section class="result-section padding">
+        <section class="result-section padding hidden" id="resultSection">
             <div class="result-box">
                 <div class="result-logo">
                     <svg class="checkmark-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,24 +54,25 @@
                 <p>Here's how you performed</p>
                 <div class="result-cart-box flex">
                     <div class="cart-box-1">
-                        <div>0</div>
+                        <div id="correctAnswers">0</div>
                         <div class="cart-box-text">Correct</div>
                     </div>
                     <div class="cart-box-2">
-                        <div>0</div>
+                        <div id="wrongAnswers">0</div>
                         <div class="cart-box-text">Wrong</div>
                     </div>
                     <div class="cart-box-3">
-                        <div>0%</div>
+                        <div id="scorePercent">0%</div>
                         <div class="cart-box-text">Score</div>
                     </div>
                 </div>
                 <div class="re-start-btn-div flex">
-                    <button class="re-start-btn">Start New Quiz</button>
+                    <button class="re-start-btn" id="restartBtn">Start New Quiz</button>
                 </div>
             </div>
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
 
 </html>
