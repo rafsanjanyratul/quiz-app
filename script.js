@@ -66,10 +66,34 @@ function loadQuestions() {
     const q = shuffleQuestions[currentQuestion];
     questionEl.textContent = q.question;
     q.options.forEach((option, index) => {
-        optionsContainer.innerHTML += `<button class="option-cart">
+        optionsContainer.innerHTML += `<button class="option-cart" onclick="userAns(${index})">
                     <span class="option-btn">${optionBtn[index]}</span>
                     <span class="option-text">${option}</span>
                 </button>`
     })
-}
+} 
 loadQuestions();
+
+function userAns(index){
+const q = shuffleQuestions[currentQuestion];
+const btn = document.getElementsByClassName("option-cart")[index];
+const btn1 = document.getElementsByClassName("option-btn")[index];
+if(index === q.correct){
+btn.style.background = "linear-gradient(90deg, rgb(20, 80, 20), rgb(60, 160, 60))";
+btn.style.borderColor = "white";
+btn1.style.backgroundColor = "green";
+}
+else{
+    const correctBtn = document.getElementsByClassName("option-cart")[q.correct];
+    const btn2 = document.getElementsByClassName("option-btn")[q.correct]
+    correctBtn.style.borderColor = "white"
+    correctBtn.style.background = "linear-gradient(90deg, rgb(20, 80, 20), rgb(60, 160, 60))";
+    correctBtn.style.opacity = "0.7";
+    btn2.style.backgroundColor = "green";
+
+
+btn.style.background = "linear-gradient(90deg, rgb(150, 0, 0), rgb(255, 50, 50))";
+btn.style.borderColor = "white";
+btn1.style.backgroundColor = "red";
+}
+}
