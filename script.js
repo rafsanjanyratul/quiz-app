@@ -3,55 +3,55 @@
 // ============================================
 const quizData = [
     {
-        question: "What does 'let' keyword do in JavaScript?",
-        options: ["Declares a global variable", "Declares a block-scoped variable", "Creates a function", "Imports a module"],
-        correct: 1,
-    },
-    {
-        question: "Which method removes the last element from an array?",
-        options: ["remove()", "delete()", "pop()", "shift()"],
-        correct: 2,
-    },
-    {
-        question: "What is the correct way to write a JavaScript comment?",
-        options: ["// This is a comment", "<!-- This is a comment -->", "* This is a comment *", "{ This is a comment }"],
-        correct: 0,
-    },
-    {
-        question: "What does 'JSON' stand for?",
-        options: ["Java Source Object Notation", "JavaScript Object Notation", "Java Syntax Object Name", "JavaScript Online Notation"],
-        correct: 1,
-    },
-    {
-        question: "Which method converts a string to a number in JavaScript?",
-        options: ["parseInt()", "stringToNumber()", "convertNumber()", "toInteger()"],
-        correct: 0,
-    },
-    {
-        question: "What is the default return value of a function in JavaScript?",
-        options: ["null", "0", "undefined", "false"],
-        correct: 2,
-    },
-    {
-        question: "Which operator checks both value AND type in JavaScript?",
-        options: ["==", "===", "!=", "="],
-        correct: 1,
-    },
-    {
-        question: "What does 'const' keyword do?",
-        options: ["Creates a changeable variable", "Creates a constant variable", "Creates a global variable", "Creates a local function"],
-        correct: 1,
-    },
-    {
-        question: "Which method adds an element to the end of an array?",
-        options: ["unshift()", "push()", "add()", "append()"],
-        correct: 1,
-    },
-    {
-        question: "What is the correct way to declare a function in JavaScript?",
-        options: ["function myFunction() {}", "def myFunction():", "func myFunction() {}", "define myFunction() {}"],
-        correct: 0,
-    },
+    question: "Which company owns YouTube?",
+    options: ["Microsoft", "Meta", "Google", "Amazon"],
+    correct: 2,
+},
+{
+    question: "What does 'AI' stand for?",
+    options: ["Automated Internet", "Artificial Intelligence", "Advanced Input", "Auto Information"],
+    correct: 1,
+},
+{
+    question: "Which company developed Facebook?",
+    options: ["Google", "Meta (formerly Facebook Inc.)", "Apple", "IBM"],
+    correct: 1,
+},
+{
+    question: "Which of the following is a search engine?",
+    options: ["Google", "Facebook", "WhatsApp", "Instagram"],
+    correct: 0,
+},
+{
+    question: "What does the term 'Cloud Storage' mean?",
+    options: ["Storing data in pen drives", "Storing data on remote servers", "Storing data inside RAM", "Storing data only on mobile"],
+    correct: 1,
+},
+{
+    question: "Which technology is used for digital cryptocurrency like Bitcoin?",
+    options: ["Blockchain", "Cloud Computing", "AI", "5G"],
+    correct: 0,
+},
+{
+    question: "What does 'URL' stand for?",
+    options: ["User Resource Link", "Universal Resource Locator", "Unified Register Line", "Universal Routing List"],
+    correct: 1,
+},
+{
+    question: "Which company created the Android operating system?",
+    options: ["Apple", "Google", "Samsung", "Huawei"],
+    correct: 1,
+},
+{
+    question: "What is 5G mainly used for?",
+    options: ["High-speed internet & low latency", "Charging mobile faster", "Saving battery", "Making calls only"],
+    correct: 0,
+},
+{
+    question: "What is the main purpose of Google Drive?",
+    options: ["Play online games", "Store and share files online", "Create websites", "Edit programming code"],
+    correct: 1,
+},
 ];
 
 const optionBtn = ['A', 'B', 'C', 'D'];
@@ -80,20 +80,20 @@ const btn = document.getElementsByClassName("option-cart")[index];
 const btn1 = document.getElementsByClassName("option-btn")[index];
 if(index === q.correct){
 btn.style.background = "linear-gradient(90deg, rgb(20, 80, 20), rgb(60, 160, 60))";
-btn.style.borderColor = "white";
+// btn.style.borderColor = "white";
 btn1.style.backgroundColor = "green";
 }
 else{
     const correctBtn = document.getElementsByClassName("option-cart")[q.correct];
     const btn2 = document.getElementsByClassName("option-btn")[q.correct]
-    correctBtn.style.borderColor = "white"
+    // correctBtn.style.borderColor = "white"
     correctBtn.style.background = "linear-gradient(90deg, rgb(20, 80, 20), rgb(60, 160, 60))";
     correctBtn.style.opacity = "0.7";
     btn2.style.backgroundColor = "green";
 
 
 btn.style.background = "linear-gradient(90deg, rgb(150, 0, 0), rgb(255, 50, 50))";
-btn.style.borderColor = "white";
+// btn.style.borderColor = "white";
 btn1.style.backgroundColor = "red";
 }
 }
