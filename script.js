@@ -61,10 +61,17 @@ let currentQuestion = 0;
 
 const questionEl = document.getElementById("question")
 const optionsContainer = document.getElementById("optionsContainer")
+const currentQuestionEle = document.getElementById("currentQuestion1")
+const totalQuestionEle = document.getElementById("totalQuestions")
+const nextBtnEle = document.getElementById("nextBtn");
+const resultBtnEle = document.getElementById("resultBtn")
 
 function loadQuestions() {
     const q = shuffleQuestions[currentQuestion];
     questionEl.textContent = q.question;
+    currentQuestionEle.innerText = currentQuestion + 1;
+    totalQuestionEle.innerText = quizData.length;
+    optionsContainer.innerHTML = " ";
     q.options.forEach((option, index) => {
         optionsContainer.innerHTML += `<button class="option-cart" onclick="userAns(${index})">
                     <span class="option-btn">${optionBtn[index]}</span>
@@ -76,10 +83,13 @@ loadQuestions();
 
 function userAns(index){
 const q = shuffleQuestions[currentQuestion];
-const btn = document.getElementsByClassName("option-cart")[index];
+const btn = document.getElementsByClassName("option-cart");
 const btn1 = document.getElementsByClassName("option-btn")[index];
+for(btnExtra of btn){
+   btnExtra.setAttribute("disabled", true);
+}
 if(index === q.correct){
-btn.style.background = "linear-gradient(90deg, rgb(20, 80, 20), rgb(60, 160, 60))";
+btn[index].style.background = "linear-gradient(90deg, rgb(20, 80, 20), rgb(60, 160, 60))";
 // btn.style.borderColor = "white";
 btn1.style.backgroundColor = "green";
 }
@@ -92,8 +102,17 @@ else{
     btn2.style.backgroundColor = "green";
 
 
-btn.style.background = "linear-gradient(90deg, rgb(150, 0, 0), rgb(255, 50, 50))";
+btn[index].style.background = "linear-gradient(90deg, rgb(150, 0, 0), rgb(255, 50, 50))";
 // btn.style.borderColor = "white";
 btn1.style.backgroundColor = "red";
 }
+}
+nextBtnEle.addEventListener("click", nextBtnActive)
+function nextBtnActive (){
+    if(currentQuestion==quizData.length-1){
+        nextBtnEle.setAttribute("disabled", true),
+resultBtnEle.removeAttribute("disabled")
+    }
+currentQuestion ++;
+loadQuestions();
 }

@@ -288,11 +288,6 @@ p {
     box-shadow: 0 0 15px rgba(200, 40, 40, 0.5);
 }
 
-/* Selected answer styling */
-.options-container button.selected {
-    transform: scale(1.02);
-}
-
 /* Disabled state for all option buttons after selection */
 .options-container button:disabled {
     cursor: not-allowed;
