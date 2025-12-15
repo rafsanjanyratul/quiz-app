@@ -59,6 +59,8 @@ let currentQuestion = 0;
 // let score = 0;
 let correctAnsCount = 0;
 let wrongAnsCount = 0;
+let timer;
+let timeLeft = 5;
 
 const questionEl = document.getElementById("question")
 const optionsContainer = document.getElementById("optionsContainer")
@@ -74,6 +76,7 @@ const wrongAnsEle = document.getElementById("wrongAnswers")
 const scorePercentEle = document.getElementById("scorePercent")
 const progressPercentEle = document.getElementById("progressPercent")
 const progressBarEle = document.getElementById("progressBar")
+const timerEle = document.getElementById("timer")
 
 function progressPercent(){
     progress = ((currentQuestion + 1) / quizData.length) * 100;
@@ -81,6 +84,9 @@ function progressPercent(){
 }
 
 function loadQuestions() {
+    clearInterval(timer)
+    timeLeft = 5;
+ timer = setInterval(countDown, 1000);
     const p = progressPercent();
     const q = shuffleQuestions[currentQuestion];
     questionEl.textContent = q.question;
@@ -98,7 +104,8 @@ function loadQuestions() {
 }
 loadQuestions();
 
-function userAns(index) {
+function userAns(index, isUser = true) {
+    clearInterval(timer)
     const q = shuffleQuestions[currentQuestion];
     const btn = document.getElementsByClassName("option-cart");
     const btn1 = document.getElementsByClassName("option-btn")[index];
@@ -106,13 +113,13 @@ function userAns(index) {
         btnExtra.setAttribute("disabled", true);
     }
     if (index === q.correct) {
-        correctAnsCount += 1;
+        isUser && correctAnsCount ++;
         btn[index].style.background = "linear-gradient(90deg, rgb(20, 80, 20), rgb(60, 160, 60))";
         // btn.style.borderColor = "white";
         btn1.style.backgroundColor = "green";
     }
     else {
-        wrongAnsCount += 1;
+      wrongAnsCount ++;
         const correctBtn = document.getElementsByClassName("option-cart")[q.correct];
         const btn2 = document.getElementsByClassName("option-btn")[q.correct]
         // correctBtn.style.borderColor = "white"
@@ -138,18 +145,18 @@ function nextBtnActive() {
 
 resultBtnEle.addEventListener("click", resultSecShow);
 function resultSecShow() {
+    clearInterval(timer)
      correctAnsEle.textContent = correctAnsCount;
     wrongAnsEle.textContent = wrongAnsCount;
     score = (correctAnsCount / quizData.length) * 100 + "%";
-    scorePercentEle.textContent = score
-    quizSectionEle.classList.toggle("hidden");
-    resultSectionEle.classList.toggle("hidden")
+    scorePercentEle.textContent = score;
+   resetUi();
     
 }
-restartBtnEle.addEventListener("click", () => {
-resetUi();
-})
 function resetUi() {
+    timeLeft = 0;
+    clearInterval(timer);
+    updateTimer();
     currentQuestion = 0;
     // score = 0;
     correctAnsCount = 0;
@@ -157,6 +164,24 @@ function resetUi() {
     quizSectionEle.classList.toggle("hidden");
     resultSectionEle.classList.toggle("hidden")
     nextBtnEle.removeAttribute("disabled"),
-        resultBtnEle.setAttribute("disabled", true);
-    loadQuestions();
+    resultBtnEle.setAttribute("disabled", true);
+    
+}
+restartBtnEle.addEventListener("click", () => {
+resetUi();
+ loadQuestions();
+})
+
+function countDown(){
+    updateTimer()
+    if(timeLeft == 0){
+        clearInterval(timer);
+        userAns(shuffleQuestions[currentQuestion].correct, false);
+    }
+    timeLeft --;
+
+}
+
+function updateTimer(){
+    timerEle.textContent = `00:${timeLeft.toString().padStart(2,0)}`
 }
