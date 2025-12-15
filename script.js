@@ -58,7 +58,7 @@ const optionBtn = ['A', 'B', 'C', 'D'];
 
 const shuffleQuestions = [...quizData].sort(() => Math.random() - 0.5);
 let currentQuestion = 0;
-let score = 0;
+// let score = 0;
 let correctAnsCount = 0;
 let wrongAnsCount = 0;
 
@@ -71,6 +71,9 @@ const resultBtnEle = document.getElementById("resultBtn");
 const resultSectionEle = document.getElementById("resultSection")
 const quizSectionEle = document.getElementById("quizSection")
 const restartBtnEle = document.getElementById("restartBtn")
+const correctAnsEle = document.getElementById("correctAnswers")
+const wrongAnsEle = document.getElementById("wrongAnswers")
+const scorePercentEle = document.getElementById("scorePercent")
 
 function loadQuestions() {
     const q = shuffleQuestions[currentQuestion];
@@ -117,7 +120,7 @@ function userAns(index) {
 }
 nextBtnEle.addEventListener("click", nextBtnActive)
 function nextBtnActive() {
-    if (currentQuestion == quizData.length - 1) {
+    if (currentQuestion == quizData.length - 2) {
         nextBtnEle.setAttribute("disabled", true),
             resultBtnEle.removeAttribute("disabled")
     }
@@ -127,18 +130,25 @@ function nextBtnActive() {
 
 resultBtnEle.addEventListener("click", resultSecShow);
 function resultSecShow() {
+     correctAnsEle.textContent = correctAnsCount;
+    wrongAnsEle.textContent = wrongAnsCount;
+    score = (correctAnsCount / quizData.length) * 100 + "%";
+    scorePercentEle.textContent = score
     quizSectionEle.classList.toggle("hidden");
     resultSectionEle.classList.toggle("hidden")
+    
 }
 restartBtnEle.addEventListener("click", () => {
+resetUi();
+})
+function resetUi() {
+    currentQuestion = 0;
+    // score = 0;
+    correctAnsCount = 0;
+    wrongAnsCount = 0;
     quizSectionEle.classList.toggle("hidden");
     resultSectionEle.classList.toggle("hidden")
     nextBtnEle.removeAttribute("disabled"),
         resultBtnEle.setAttribute("disabled", true);
-    currentQuestion = 0;
-    score = 0;
-    correctAnsCount = 0;
-    wrongAnsCount = 0;
     loadQuestions();
-
-})
+}
