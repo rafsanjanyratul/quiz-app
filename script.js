@@ -1,6 +1,4 @@
-// ============================================
-// QUIZ DATA - JavaScript Questions
-// ============================================
+
 const quizData = [
     {
         question: "Which company owns YouTube?",
@@ -74,12 +72,22 @@ const restartBtnEle = document.getElementById("restartBtn")
 const correctAnsEle = document.getElementById("correctAnswers")
 const wrongAnsEle = document.getElementById("wrongAnswers")
 const scorePercentEle = document.getElementById("scorePercent")
+const progressPercentEle = document.getElementById("progressPercent")
+const progressBarEle = document.getElementById("progressBar")
+
+function progressPercent(){
+    progress = ((currentQuestion + 1) / quizData.length) * 100;
+    return progress;
+}
 
 function loadQuestions() {
+    const p = progressPercent();
     const q = shuffleQuestions[currentQuestion];
     questionEl.textContent = q.question;
     currentQuestionEle.innerText = currentQuestion + 1;
     totalQuestionEle.innerText = quizData.length;
+    progressPercentEle.textContent = p + "%";
+    progressBarEle.style.width = `${p}%`;
     optionsContainer.innerHTML = " ";
     q.options.forEach((option, index) => {
         optionsContainer.innerHTML += `<button class="option-cart" onclick="userAns(${index})">
