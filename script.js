@@ -60,7 +60,7 @@ let currentQuestion = 0;
 let correctAnsCount = 0;
 let wrongAnsCount = 0;
 let timer;
-let timeLeft = 5;
+let timeLeft = 15;
 
 const questionEl = document.getElementById("question")
 const optionsContainer = document.getElementById("optionsContainer")
@@ -85,7 +85,7 @@ function progressPercent(){
 
 function loadQuestions() {
     clearInterval(timer)
-    timeLeft = 5;
+    timeLeft = 15;
  timer = setInterval(countDown, 1000);
     const p = progressPercent();
     const q = shuffleQuestions[currentQuestion];
