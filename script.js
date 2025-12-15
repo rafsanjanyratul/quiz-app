@@ -102,7 +102,7 @@ function loadQuestions() {
                 </button>`
     })
 }
-loadQuestions();
+// loadQuestions();
 
 function userAns(index, isUser = true) {
     clearInterval(timer)
@@ -193,14 +193,21 @@ const logInEle = document.getElementById("logIn")
 const inputTextEle = document.getElementById("inputText")
 
 
-function startQuiz(){
-    timeLeft = 15;
-    if(usernameEle.value !== ""){
-        mainSecEle.classList.toggle("hidden");
-        logInEle.classList.toggle("hidden");
- inputTextEle.innerText=usernameEle.value;
+function startQuiz() {
+    if (usernameEle.value !== "") {
+        clearInterval(timer);
+        currentQuestion = 0;
+        correctAnsCount = 0;
+        wrongAnsCount = 0;
+        timeLeft = 15;
+
+        mainSecEle.classList.remove("hidden");
+        logInEle.classList.add("hidden");
+        inputTextEle.innerText = usernameEle.value;
+
+        loadQuestions();
     }
-    else{
-        alert("please enter your name")
+    else {
+        alert("please enter your name");
     }
 }
