@@ -9,7 +9,7 @@
 </head>
 
 <body class="body-bg-color">
-    <main class="main-bg-color">
+    <main class="main-bg-color hidden" id="mainSec">
         <header class="header-bg-color">
             <div class="header-text">
                 <h1>Quiz Challenge</h1>
@@ -35,7 +35,7 @@
                 <h2 class="question-text" id="question">What is DOM?</h2>
             </div>
             <div class="options-container flex" id="optionsContainer">
-                
+
             </div>
             <div class="button-section flex">
                 <button class="btn-next" id="nextBtn">Next Question</button>
@@ -52,6 +52,7 @@
                 </div>
                 <h1>Quiz Completed!</h1>
                 <p>Here's how you performed</p>
+                <h2 id="inputText">Here's how you performed</h2>
                 <div class="result-cart-box flex">
                     <div class="cart-box-1">
                         <div id="correctAnswers">0</div>
@@ -72,6 +73,15 @@
             </div>
         </section>
     </main>
+    <section class="log-in" id="logIn">
+        <div class="login-container">
+            <h2>Welcome to Quiz</h2>
+            <p>Please enter your name to continue</p>
+
+            <input type="text" id="username" placeholder="Enter your name">
+            <button id="loginBtn" onclick="startQuiz()">Enter Quiz</button>
+        </div>
+    </section>
     <script src="script.js"></script>
 </body>
 

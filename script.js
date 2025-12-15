@@ -185,3 +185,22 @@ function countDown(){
 function updateTimer(){
     timerEle.textContent = `00:${timeLeft.toString().padStart(2,0)}`
 }
+
+const loginBtnEle = document.getElementById("loginBtn")
+const usernameEle = document.getElementById("username")
+const mainSecEle = document.getElementById("mainSec")
+const logInEle = document.getElementById("logIn")
+const inputTextEle = document.getElementById("inputText")
+
+
+function startQuiz(){
+    timeLeft = 15;
+    if(usernameEle.value !== ""){
+        mainSecEle.classList.toggle("hidden");
+        logInEle.classList.toggle("hidden");
+ inputTextEle.innerText=usernameEle.value;
+    }
+    else{
+        alert("please enter your name")
+    }
+}
