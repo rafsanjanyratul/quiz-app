@@ -295,6 +295,14 @@ p {
 #inputText{
     text-align:center;
 }
+
+.log-in {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .login-container {
   background: #fff;
   padding: 30px;
@@ -326,9 +334,11 @@ p {
   padding: 12px;
   margin-bottom: 15px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid gray;
   outline: none;
   font-size: 14px;
+  background-color: #0B182B;
+  color:white;
 }
 
 .login-container input:focus {
