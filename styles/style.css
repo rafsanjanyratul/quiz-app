@@ -357,7 +357,13 @@ p {
 .login-container button:hover {
     background: linear-gradient(90deg, rgb(0, 180, 100), rgb(120, 60, 200));
 }
-
+.log-in small{
+    text-align: justify;
+}
+.log-in p{
+ margin-top: 20px;
+ font-weight:500;
+}
 .hidden {
     display: none !important;
 }
